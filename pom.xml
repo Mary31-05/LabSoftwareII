@@ -12,4 +12,54 @@
         <exec.mainClass>co.edu.unicauca.mvc.Aplicacion_capas_mvc</exec.mainClass>
     </properties>
     <name>aplicacion_capas_mvc (fL)</name>
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>5.10.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.10.2</version>
+            <scope>test</scope>
+        </dependency>
+    <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-core</artifactId>
+        <version>2.2.5</version>
+        <scope>test</scope>
+      <type>jar</type>
+    </dependency>
+        <dependency>
+            <groupId>com.vertispan.j2cl</groupId>
+            <artifactId>junit-emul</artifactId>
+            <version>0.11.0-9336533b6</version>
+            <scope>test</scope>
+            <type>pom</type>
+        </dependency>
+        
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.13.2</version>
+        <scope>test</scope>
+        </dependency>
+    <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-core</artifactId>
+        <version>3.11.2</version>
+        <scope>test</scope>
+        </dependency>
+        
+        
+    </dependencies>
+    
 </project>

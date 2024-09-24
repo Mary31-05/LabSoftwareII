@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class VtnListarArticulos extends javax.swing.JInternalFrame {
@@ -48,7 +49,7 @@ public class VtnListarArticulos extends javax.swing.JInternalFrame {
         }        
     }
      
-    private void llenarTabla()
+    public void llenarTabla()
     {
         DefaultTableModel model=(DefaultTableModel) this.jTableListarArticulos.getModel();
         limpiarTabla();
@@ -76,6 +77,10 @@ public class VtnListarArticulos extends javax.swing.JInternalFrame {
         }
         
     }
+    public JTable getJTableListarArticulos() {
+    return jTableListarArticulos;
+    }
+    
    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
