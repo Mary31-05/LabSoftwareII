@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import co.edu.unicauca.mvc.modelos.Conferencia;
 import java.util.LinkedList;
+import javax.swing.JTable;
 
 public class VtnListarConferencias extends javax.swing.JInternalFrame {
 
@@ -38,7 +39,7 @@ public class VtnListarConferencias extends javax.swing.JInternalFrame {
         }        
     }
     
-    private void llenarTabla()
+    public void llenarTabla()
     {
         DefaultTableModel model=(DefaultTableModel) this.jTableListadoConferencias.getModel();
         limpiarTabla();
@@ -52,6 +53,9 @@ public class VtnListarConferencias extends javax.swing.JInternalFrame {
         
     }
     
+    public JTable getListadoConferenciasTable() {
+        return jTableListadoConferencias;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

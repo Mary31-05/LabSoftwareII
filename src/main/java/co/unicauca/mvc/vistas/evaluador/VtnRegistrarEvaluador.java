@@ -7,6 +7,9 @@ import co.edu.unicauca.mvc.modelos.Articulo;
 import co.edu.unicauca.mvc.utilidades.Utilidades;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import javax.swing.JComboBox;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 /**
  *
  * @author Usuario
@@ -214,7 +217,7 @@ public class VtnRegistrarEvaluador extends javax.swing.JFrame {
             Utilidades.mensajeError("Evaluador no almacenado","Error al almacenar el evaluador");
         }
     }//GEN-LAST:event_jButtonRegistrarEActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
@@ -235,4 +238,5 @@ public class VtnRegistrarEvaluador extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldApellido;
     private javax.swing.JTextField jTextFieldNombreE;
     // End of variables declaration//GEN-END:variables
+
 }
