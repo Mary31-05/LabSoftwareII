@@ -4,6 +4,7 @@ import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoOrganizadores;
 import co.edu.unicauca.mvc.modelos.Organizador;
 import java.util.LinkedList;
 import javax.swing.JFrame;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -36,7 +37,7 @@ public class VtnListarOrganizadores extends javax.swing.JInternalFrame {
         }        
     }
     
-    private void llenarTabla() {
+    public void llenarTabla() {
         DefaultTableModel model = (DefaultTableModel) this.jTableListadoOrganizadores.getModel();
         limpiarTabla();
         LinkedList<Organizador> listaOrganizadores = (LinkedList<Organizador>) this.objServicioAlmacenamientoOrganizadores.listarOrganizador();
@@ -50,6 +51,11 @@ public class VtnListarOrganizadores extends javax.swing.JInternalFrame {
             model.addRow(fila);
         }
     }
+    
+        public JTable getListadoOrganizadoresTable() {
+        return jTableListadoOrganizadores;
+    }
+        
 
     /**
      * This method is called from within the constructor to initialize the form.
