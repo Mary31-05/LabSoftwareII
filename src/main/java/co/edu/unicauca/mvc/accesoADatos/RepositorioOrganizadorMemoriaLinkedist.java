@@ -7,6 +7,8 @@ import co.edu.unicauca.mvc.modelos.Organizador;
  *
  * @author Usuario
  */
+
+//prueba
 public class RepositorioOrganizadorMemoriaLinkedist implements InterfaceRepositorioOrganizador
 {
     private LinkedList<Organizador> listaOrganizadores;
