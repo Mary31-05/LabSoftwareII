@@ -4,6 +4,7 @@ package co.edu.unicauca.mvc.vistas.adminConferencia;
 import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoArticulos;
 import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoEvaluadores;
 import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoConferencias;
+import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoOrganizadores;
 import co.edu.unicauca.mvc.vistas.articulos.VtnListarArticulos;
 import co.unicauca.mvc.vistas.evaluador.VtnListarEvaluador;
 import java.awt.Image;
@@ -15,10 +16,12 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
     private VtnVerEstadisticas objVtnVerEstadisticas;
     private VtnListarArticulos objVtnListarArticulos;
     private VtnListarConferencias objVtnListarConferencias;
-     private VtnListarEvaluador objVtnListarEvaluador;
+    private VtnListarEvaluador objVtnListarEvaluador;
     private ServicioAlmacenamientoConferencias objServicio1;   
     private ServicioAlmacenamientoArticulos  objServicio2;
+    private ServicioAlmacenamientoOrganizadores objServicio3;
     private ServicioAlmacenamientoEvaluadores  objServicio4;
+    private VtnListarOrganizadores objVtnRegistrarOrganizadores;
         
     public VtnPrincipalAdmin() {
         initComponents();
@@ -26,13 +29,12 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
     
-    public void asociarServios(
-            ServicioAlmacenamientoConferencias objServicio1,
-            ServicioAlmacenamientoArticulos objServicio2, 
-            ServicioAlmacenamientoEvaluadores objServicio4)
+    public void asociarServicios(
+        ServicioAlmacenamientoConferencias objServicio1, ServicioAlmacenamientoArticulos objServicio2, ServicioAlmacenamientoOrganizadores objServicio3, ServicioAlmacenamientoEvaluadores objServicio4)
     {
         this.objServicio1=objServicio1;
         this.objServicio2=objServicio2;
+        this.objServicio3=objServicio3;
         this.objServicio4=objServicio4;
         relacionarInternalFrameConJdesptokPane();
     }
@@ -47,6 +49,9 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
         
         this.objVtnListarConferencias= new VtnListarConferencias(this.objServicio1);
         this.jDesktopPanelPrincipal.add(this.objVtnListarConferencias);
+        
+        this.objVtnRegistrarOrganizadores  = new VtnListarOrganizadores(this.objServicio3);
+        this.jDesktopPanelPrincipal.add(this.objVtnRegistrarOrganizadores);
         
         this.objVtnListarEvaluador= new VtnListarEvaluador(this.objServicio2, this.objServicio4);
         this.jDesktopPanelPrincipal.add(this.objVtnListarEvaluador);
@@ -113,6 +118,11 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
         });
 
         jButtonGestionarO.setText("Gestionar Organizadores");
+        jButtonGestionarO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGestionarOActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelMenuLayout = new javax.swing.GroupLayout(jPanelMenu);
         jPanelMenu.setLayout(jPanelMenuLayout);
@@ -224,6 +234,7 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
         this.objVtnVerEstadisticas.setVisible(false);
         this.objVtnListarConferencias.setVisible(false);
         this.objVtnListarEvaluador.setVisible(false);
+        this.objVtnRegistrarOrganizadores.setVisible(false);
     }//GEN-LAST:event_jButtonVerArticulosEnviadosActionPerformed
 
     private void jButtonVerEstadisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVerEstadisticasActionPerformed
@@ -231,6 +242,7 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
         this.objVtnListarArticulos.setVisible(false);
         this.objVtnListarConferencias.setVisible(false);
         this.objVtnListarEvaluador.setVisible(false);
+        this.objVtnRegistrarOrganizadores.setVisible(false);
     }//GEN-LAST:event_jButtonVerEstadisticasActionPerformed
 
     private void jButtonGestionarConferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGestionarConferenciasActionPerformed
@@ -238,6 +250,7 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
         this.objVtnVerEstadisticas.setVisible(false);
         this.objVtnListarArticulos.setVisible(false);
         this.objVtnListarEvaluador.setVisible(false);
+        this.objVtnRegistrarOrganizadores.setVisible(false);
     }//GEN-LAST:event_jButtonGestionarConferenciasActionPerformed
 
     private void jButtonGestionarEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGestionarEActionPerformed
@@ -245,7 +258,16 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
         this.objVtnListarConferencias.setVisible(false);
         this.objVtnVerEstadisticas.setVisible(false);
         this.objVtnListarArticulos.setVisible(false);
+        this.objVtnRegistrarOrganizadores.setVisible(false);
     }//GEN-LAST:event_jButtonGestionarEActionPerformed
+
+    private void jButtonGestionarOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGestionarOActionPerformed
+        this.objVtnListarEvaluador.setVisible(false);
+        this.objVtnListarConferencias.setVisible(false);
+        this.objVtnVerEstadisticas.setVisible(false);
+        this.objVtnListarArticulos.setVisible(false);
+        this.objVtnRegistrarOrganizadores.setVisible(true);
+    }//GEN-LAST:event_jButtonGestionarOActionPerformed
 
     
 
