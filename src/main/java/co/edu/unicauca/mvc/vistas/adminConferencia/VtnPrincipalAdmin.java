@@ -5,7 +5,9 @@ import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoArticulos;
 import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoEvaluadores;
 import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoConferencias;
 import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoOrganizadores;
+import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoUsuarios;
 import co.edu.unicauca.mvc.vistas.articulos.VtnListarArticulos;
+import co.edu.unicauca.mvc.vistas.login.VtnLogin;
 import co.unicauca.mvc.vistas.evaluador.VtnListarEvaluador;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -17,27 +19,37 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
     private VtnListarArticulos objVtnListarArticulos;
     private VtnListarConferencias objVtnListarConferencias;
     private VtnListarEvaluador objVtnListarEvaluador;
+    private VtnLogin objVtnLogin;
     private ServicioAlmacenamientoConferencias objServicio1;   
     private ServicioAlmacenamientoArticulos  objServicio2;
     private ServicioAlmacenamientoOrganizadores objServicio3;
     private ServicioAlmacenamientoEvaluadores  objServicio4;
+    private ServicioAlmacenamientoUsuarios objServicio5;
     private VtnListarOrganizadores objVtnRegistrarOrganizadores;
+    
         
     public VtnPrincipalAdmin() {
         initComponents();
         establecerIconoOrganización();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
+        this.jPanelMenu.setVisible(false);
     }
     
-    public void asociarServicios(
-        ServicioAlmacenamientoConferencias objServicio1, ServicioAlmacenamientoArticulos objServicio2, ServicioAlmacenamientoOrganizadores objServicio3, ServicioAlmacenamientoEvaluadores objServicio4)
-    {
-        this.objServicio1=objServicio1;
-        this.objServicio2=objServicio2;
-        this.objServicio3=objServicio3;
-        this.objServicio4=objServicio4;
+    public void asociarServios(
+            ServicioAlmacenamientoConferencias objServicio1,
+            ServicioAlmacenamientoArticulos objServicio2,
+            ServicioAlmacenamientoOrganizadores objServicio3,
+            ServicioAlmacenamientoEvaluadores objServicio4,
+            ServicioAlmacenamientoUsuarios objServicio5) {
+        this.objServicio1 = objServicio1;
+        this.objServicio2 = objServicio2;
+        this.objServicio3 = objServicio3;
+        this.objServicio4 = objServicio4;
+        this.objServicio5 = objServicio5;
         relacionarInternalFrameConJdesptokPane();
     }
+
     
     private void relacionarInternalFrameConJdesptokPane()
     {
@@ -55,6 +67,9 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
         
         this.objVtnListarEvaluador= new VtnListarEvaluador(this.objServicio2, this.objServicio4);
         this.jDesktopPanelPrincipal.add(this.objVtnListarEvaluador);
+        
+        this.objVtnLogin = new VtnLogin(this.objServicio5);
+        this.jDesktopPanelPrincipal.add(this.objVtnLogin);
     }
 
     private void establecerIconoOrganización()
@@ -78,6 +93,7 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
         jButtonGestionarE = new javax.swing.JButton();
         jButtonGestionarO = new javax.swing.JButton();
         jPanelInferior = new javax.swing.JPanel();
+        jButtonIniciarSesion = new javax.swing.JButton();
         jPanelCentral = new javax.swing.JPanel();
         jDesktopPanelPrincipal = new javax.swing.JDesktopPane();
 
@@ -181,15 +197,29 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
 
         jPanelInferior.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jButtonIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButtonIniciarSesion.setText("Iniciar Sesion");
+        jButtonIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonIniciarSesionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelInferiorLayout = new javax.swing.GroupLayout(jPanelInferior);
         jPanelInferior.setLayout(jPanelInferiorLayout);
         jPanelInferiorLayout.setHorizontalGroup(
             jPanelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 798, Short.MAX_VALUE)
+            .addGroup(jPanelInferiorLayout.createSequentialGroup()
+                .addGap(213, 213, 213)
+                .addComponent(jButtonIniciarSesion)
+                .addContainerGap(476, Short.MAX_VALUE))
         );
         jPanelInferiorLayout.setVerticalGroup(
             jPanelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(jPanelInferiorLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jButtonIniciarSesion)
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanelInferior, java.awt.BorderLayout.PAGE_END);
@@ -204,7 +234,7 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
         );
         jDesktopPanelPrincipalLayout.setVerticalGroup(
             jDesktopPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 236, Short.MAX_VALUE)
+            .addGap(0, 233, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanelCentralLayout = new javax.swing.GroupLayout(jPanelCentral);
@@ -269,12 +299,17 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
         this.objVtnRegistrarOrganizadores.setVisible(true);
     }//GEN-LAST:event_jButtonGestionarOActionPerformed
 
+    private void jButtonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarSesionActionPerformed
+        objVtnLogin.setVisible(true);
+    }//GEN-LAST:event_jButtonIniciarSesionActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonGestionarConferencias;
     private javax.swing.JButton jButtonGestionarE;
     private javax.swing.JButton jButtonGestionarO;
+    private javax.swing.JButton jButtonIniciarSesion;
     private javax.swing.JButton jButtonVerArticulosEnviados;
     private javax.swing.JButton jButtonVerEstadisticas;
     private javax.swing.JDesktopPane jDesktopPanelPrincipal;
