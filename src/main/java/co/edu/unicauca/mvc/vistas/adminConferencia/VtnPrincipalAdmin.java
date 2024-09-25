@@ -1,6 +1,5 @@
 package co.edu.unicauca.mvc.vistas.adminConferencia;
 
-
 import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoArticulos;
 import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoEvaluadores;
 import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoConferencias;
@@ -14,28 +13,29 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 public class VtnPrincipalAdmin extends javax.swing.JFrame {
-    
+
     private VtnVerEstadisticas objVtnVerEstadisticas;
     private VtnListarArticulos objVtnListarArticulos;
     private VtnListarConferencias objVtnListarConferencias;
     private VtnListarEvaluador objVtnListarEvaluador;
     private VtnLogin objVtnLogin;
-    private ServicioAlmacenamientoConferencias objServicio1;   
-    private ServicioAlmacenamientoArticulos  objServicio2;
+    private ServicioAlmacenamientoConferencias objServicio1;
+    private ServicioAlmacenamientoArticulos objServicio2;
     private ServicioAlmacenamientoOrganizadores objServicio3;
-    private ServicioAlmacenamientoEvaluadores  objServicio4;
+    private ServicioAlmacenamientoEvaluadores objServicio4;
     private ServicioAlmacenamientoUsuarios objServicio5;
     private VtnListarOrganizadores objVtnRegistrarOrganizadores;
-    
-        
+
     public VtnPrincipalAdmin() {
         initComponents();
         establecerIconoOrganización();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        this.jPanelMenu.setVisible(true);
         
-        this.jPanelMenu.setVisible(false);
+
     }
-    
+
     public void asociarServios(
             ServicioAlmacenamientoConferencias objServicio1,
             ServicioAlmacenamientoArticulos objServicio2,
@@ -50,36 +50,43 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
         relacionarInternalFrameConJdesptokPane();
     }
 
-    
-    private void relacionarInternalFrameConJdesptokPane()
-    {
-        this.objVtnVerEstadisticas=new VtnVerEstadisticas();         
+    private void relacionarInternalFrameConJdesptokPane() {
+        this.objVtnVerEstadisticas = new VtnVerEstadisticas();
         this.jDesktopPanelPrincipal.add(this.objVtnVerEstadisticas);
-        
-        this.objVtnListarArticulos= new VtnListarArticulos(this.objServicio2, this.objServicio1);
+
+        this.objVtnListarArticulos = new VtnListarArticulos(this.objServicio2, this.objServicio1);
         this.jDesktopPanelPrincipal.add(this.objVtnListarArticulos);
-        
-        this.objVtnListarConferencias= new VtnListarConferencias(this.objServicio1);
+
+        this.objVtnListarConferencias = new VtnListarConferencias(this.objServicio1);
         this.jDesktopPanelPrincipal.add(this.objVtnListarConferencias);
-        
-        this.objVtnRegistrarOrganizadores  = new VtnListarOrganizadores(this.objServicio3);
+
+        this.objVtnRegistrarOrganizadores = new VtnListarOrganizadores(this.objServicio3);
         this.jDesktopPanelPrincipal.add(this.objVtnRegistrarOrganizadores);
-        
-        this.objVtnListarEvaluador= new VtnListarEvaluador(this.objServicio2, this.objServicio4);
+
+        this.objVtnListarEvaluador = new VtnListarEvaluador(this.objServicio2, this.objServicio4);
         this.jDesktopPanelPrincipal.add(this.objVtnListarEvaluador);
-        
+
         this.objVtnLogin = new VtnLogin(this.objServicio5);
         this.jDesktopPanelPrincipal.add(this.objVtnLogin);
+        
     }
 
-    private void establecerIconoOrganización()
-    {
-        Image img1= new ImageIcon(getClass().getResource("/recursos/logo.png")).getImage();
-        ImageIcon img2=new ImageIcon(img1.getScaledInstance(40, 40, Image.SCALE_SMOOTH));
+    // Control roles
+    private void controlRoles() {
+        
+            boolean ingreso = this.objVtnLogin.ingreso;
+            System.out.println(ingreso);
+        
+
+    }
+
+    private void establecerIconoOrganización() {
+        Image img1 = new ImageIcon(getClass().getResource("/recursos/logo.png")).getImage();
+        ImageIcon img2 = new ImageIcon(img1.getScaledInstance(40, 40, Image.SCALE_SMOOTH));
         this.jLabelImagenOrganizacion.setIcon(img2);
         this.jLabelImagenOrganizacion.setText("");
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -301,9 +308,9 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
 
     private void jButtonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarSesionActionPerformed
         objVtnLogin.setVisible(true);
+
     }//GEN-LAST:event_jButtonIniciarSesionActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonGestionarConferencias;

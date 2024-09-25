@@ -10,4 +10,6 @@ public interface InterfaceRepositorioUsuario {
     public boolean eliminarUsuario(int idUsuario);
     public Usuario consultarUsuario(String nombreUsuario);
     public boolean actualizarUsuario(Usuario objUsuario);
+    public boolean validarIngreso(String nombre, String password);
+    public String extraerRol(String nombre);
 }

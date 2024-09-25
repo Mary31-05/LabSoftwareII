@@ -1,24 +1,23 @@
 
 package co.edu.unicauca.mvc.modelos;
 
-import org.springframework.security.crypto.bcrypt.BCrypt;
 
 public class Usuario {
     private int idUsuario;
     private String nombreUsuario;
     private String rol;
-    private String hashedPassword;
+    private String password;
 
     public Usuario() {
     }
 
-    
     public Usuario(int idUsuario, String nombreUsuario, String rol, String password) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.rol = rol;
-        this.hashedPassword = hashPassword(password);
+        this.password = password;
     }
+
 
     public int getIdUsuario() {
         return idUsuario;
@@ -44,21 +43,22 @@ public class Usuario {
         this.rol = rol;
     }
 
-    public String getHashedPassword() {
-        return hashedPassword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setHashedPassword(String hashedPassword) {
-        this.hashedPassword = hashedPassword;
+    public void setPassword(String password) {
+        this.password = password;
     }
-
-     // Hash de la contraseña utilizando BCrypt
-    private String hashPassword(String password) {
-        return BCrypt.hashpw(password, BCrypt.gensalt());
-    }
+ 
+    
 
     // Validar la contraseña comparando el hash almacenado con la contraseña proporcionada
     public boolean validarPassword(String password) {
-        return BCrypt.checkpw(password, this.hashedPassword);
+        if(this.password.equals(password)){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

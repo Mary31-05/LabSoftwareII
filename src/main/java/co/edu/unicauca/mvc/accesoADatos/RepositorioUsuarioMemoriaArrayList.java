@@ -73,6 +73,7 @@ public class RepositorioUsuarioMemoriaArrayList implements InterfaceRepositorioU
     }
     
     // Validar el ingreso de un usuario
+    @Override
     public boolean validarIngreso(String nombre, String password) {
         Usuario usuario = consultarUsuario(nombre);
         if (usuario != null) {
@@ -80,6 +81,17 @@ public class RepositorioUsuarioMemoriaArrayList implements InterfaceRepositorioU
         } else {
             System.out.println("Usuario no encontrado.");
             return false;
+        }
+    }
+
+    @Override
+    public String extraerRol(String nombre) {
+        Usuario usuario = consultarUsuario(nombre);
+        if(usuario != null){
+            return usuario.getRol();
+        }else{
+            System.out.println("Usuario no encontrado");
+            return null;
         }
     }
     

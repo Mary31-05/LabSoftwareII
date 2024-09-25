@@ -5,13 +5,15 @@ import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoUsuarios;
 
 public class VtnLogin extends javax.swing.JInternalFrame {
 
+    public boolean ingreso;
+    public String rol;
+    
     public ServicioAlmacenamientoUsuarios objServicioAlmacenamiento;
     
     public VtnLogin(
             ServicioAlmacenamientoUsuarios objServicioAlmacenamiento) 
     {
         initComponents();
-        this.objServicioAlmacenamiento = objServicioAlmacenamiento;
     }
 
 
@@ -126,6 +128,11 @@ public class VtnLogin extends javax.swing.JInternalFrame {
     private void jButtonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIngresarActionPerformed
         String nombreUsuario = jTextFieldNombreUser.getText();
         String password = jPasswordField.getText();
+        
+        ingreso = objServicioAlmacenamiento.validarIngreso(nombreUsuario, password);
+        
+        rol = objServicioAlmacenamiento.extraerRol(nombreUsuario);
+        
         
     }//GEN-LAST:event_jButtonIngresarActionPerformed
 
