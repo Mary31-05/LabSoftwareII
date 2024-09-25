@@ -48,7 +48,7 @@ public class ServicioAlmacenamientoUsuarios {
         return this.referenciaRepositorioUsuario.validarIngreso(nombreUsuario, password);
     }
     
-    public String extraerRol(String nombre){
+    /*public String extraerRol(String nombre){
         return this.referenciaRepositorioUsuario.extraerRol(nombre);
-    }
+    }*/
 }

@@ -72,13 +72,13 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
     }
 
     // Control roles
-    private void controlRoles() {
+    /*private void controlRoles() {
         
             boolean ingreso = this.objVtnLogin.ingreso;
             System.out.println(ingreso);
         
 
-    }
+    }*/
 
     private void establecerIconoOrganización() {
         Image img1 = new ImageIcon(getClass().getResource("/recursos/logo.png")).getImage();

@@ -11,5 +11,5 @@ public interface InterfaceRepositorioUsuario {
     public Usuario consultarUsuario(String nombreUsuario);
     public boolean actualizarUsuario(Usuario objUsuario);
     public boolean validarIngreso(String nombre, String password);
-    public String extraerRol(String nombre);
+    //public String extraerRol(String nombre);
 }
