@@ -1,4 +1,4 @@
-package co.unicauca.modelos.pruebas;
+package co.edu.unicauca.modelos.pruebas;
 
 import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoOrganizadores;
 import co.edu.unicauca.mvc.modelos.Organizador;
