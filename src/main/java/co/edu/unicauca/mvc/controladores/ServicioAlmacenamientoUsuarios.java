@@ -17,6 +17,12 @@ public class ServicioAlmacenamientoUsuarios {
         objUsuario.setRol("Organizador");
         objUsuario.setPassword("123");
         referenciaRepositorioUsuario.registrarUsuario(objUsuario);
+        
+        Usuario objUsuario1 = new Usuario();
+        objUsuario1.setNombreUsuario("User2");
+        objUsuario1.setRol("Autor");
+        objUsuario1.setPassword("123");
+        referenciaRepositorioUsuario.registrarUsuario(objUsuario1);
     }
     
     public boolean registrarUsuario(Usuario objUsuario)
@@ -48,7 +54,7 @@ public class ServicioAlmacenamientoUsuarios {
         return this.referenciaRepositorioUsuario.validarIngreso(nombreUsuario, password);
     }
     
-    /*public String extraerRol(String nombre){
+    public String extraerRol(String nombre){
         return this.referenciaRepositorioUsuario.extraerRol(nombre);
-    }*/
+    }
 }

@@ -84,7 +84,7 @@ public class RepositorioUsuarioMemoriaArrayList implements InterfaceRepositorioU
         }
     }
 
-    /*@Override
+    @Override
     public String extraerRol(String nombre) {
         Usuario usuario = consultarUsuario(nombre);
         if(usuario != null){
@@ -93,6 +93,6 @@ public class RepositorioUsuarioMemoriaArrayList implements InterfaceRepositorioU
             System.out.println("Usuario no encontrado");
             return null;
         }
-    }*/
+    }
     
 }

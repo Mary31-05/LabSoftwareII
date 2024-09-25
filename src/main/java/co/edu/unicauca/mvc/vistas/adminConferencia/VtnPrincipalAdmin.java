@@ -5,6 +5,7 @@ import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoEvaluadores;
 import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoConferencias;
 import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoOrganizadores;
 import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoUsuarios;
+import co.edu.unicauca.mvc.modelos.Rol;
 import co.edu.unicauca.mvc.vistas.articulos.VtnListarArticulos;
 import co.edu.unicauca.mvc.vistas.login.VtnLogin;
 import co.unicauca.mvc.vistas.evaluador.VtnListarEvaluador;
@@ -30,10 +31,9 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
         initComponents();
         establecerIconoOrganización();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-
-        this.jPanelMenu.setVisible(true);
         
-
+        this.jPanelMenu.setVisible(false);
+        
     }
 
     public void asociarServios(
@@ -67,18 +67,43 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
         this.jDesktopPanelPrincipal.add(this.objVtnListarEvaluador);
 
         this.objVtnLogin = new VtnLogin(this.objServicio5);
+        this.objVtnLogin.setObjVtnPrincipalAdmin(this);
         this.jDesktopPanelPrincipal.add(this.objVtnLogin);
         
     }
 
     // Control roles
-    /*private void controlRoles() {
+    public void controlRoles() {
+        /*if(this.objVtnLogin.buttonClicked()!=null){
+            
+        }*/
+            //boolean ingreso = this.objVtnLogin.ingreso;
         
-            boolean ingreso = this.objVtnLogin.ingreso;
-            System.out.println(ingreso);
+        if(Rol.rolUsuario!=null && Rol.rolUsuario.equals("Organizador"))
+        {
+            this.jPanelMenu.setVisible(true);
+            this.objVtnLogin.setVisible(false);
+            
+            
+            this.jButtonGestionarConferencias.setVisible(true);
+            this.jButtonGestionarO.setVisible(true);
+            this.jButtonGestionarE.setVisible(true);
+            this.jButtonVerEstadisticas.setVisible(true);
+            this.jButtonVerArticulosEnviados.setVisible(false);
+        }else if(Rol.rolUsuario.equals("Autor")){
+            this.jPanelMenu.setVisible(true);
+            this.objVtnLogin.setVisible(false);
+            
+            this.jButtonGestionarConferencias.setVisible(false);
+            this.jButtonGestionarO.setVisible(false);
+            this.jButtonGestionarE.setVisible(false);
+            this.jButtonVerEstadisticas.setVisible(false);
+            this.jButtonVerArticulosEnviados.setVisible(true);
+            
+        }
+        this.jLabelRol.setText("Rol: "+Rol.rolUsuario);
         
-
-    }*/
+    }
 
     private void establecerIconoOrganización() {
         Image img1 = new ImageIcon(getClass().getResource("/recursos/logo.png")).getImage();
@@ -99,6 +124,7 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
         jButtonVerEstadisticas = new javax.swing.JButton();
         jButtonGestionarE = new javax.swing.JButton();
         jButtonGestionarO = new javax.swing.JButton();
+        jLabelRol = new javax.swing.JLabel();
         jPanelInferior = new javax.swing.JPanel();
         jButtonIniciarSesion = new javax.swing.JButton();
         jPanelCentral = new javax.swing.JPanel();
@@ -177,6 +203,9 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jLabelRol.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelRol.setForeground(new java.awt.Color(51, 51, 255));
+
         javax.swing.GroupLayout jPanelSuperiorLayout = new javax.swing.GroupLayout(jPanelSuperior);
         jPanelSuperior.setLayout(jPanelSuperiorLayout);
         jPanelSuperiorLayout.setHorizontalGroup(
@@ -184,6 +213,8 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
             .addGroup(jPanelSuperiorLayout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addComponent(jLabelImagenOrganizacion)
+                .addGap(60, 60, 60)
+                .addComponent(jLabelRol)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSuperiorLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -194,7 +225,9 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
             jPanelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelSuperiorLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelImagenOrganizacion)
+                .addGroup(jPanelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelImagenOrganizacion)
+                    .addComponent(jLabelRol))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(17, Short.MAX_VALUE))
@@ -321,6 +354,7 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JButton jButtonVerEstadisticas;
     private javax.swing.JDesktopPane jDesktopPanelPrincipal;
     private javax.swing.JLabel jLabelImagenOrganizacion;
+    private javax.swing.JLabel jLabelRol;
     private javax.swing.JPanel jPanelCentral;
     private javax.swing.JPanel jPanelInferior;
     private javax.swing.JPanel jPanelMenu;

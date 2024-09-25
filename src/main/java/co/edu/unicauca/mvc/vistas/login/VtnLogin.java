@@ -2,11 +2,15 @@
 package co.edu.unicauca.mvc.vistas.login;
 
 import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoUsuarios;
+import co.edu.unicauca.mvc.modelos.Rol;
+import co.edu.unicauca.mvc.utilidades.Utilidades;
+import co.edu.unicauca.mvc.vistas.adminConferencia.VtnPrincipalAdmin;
 
 public class VtnLogin extends javax.swing.JInternalFrame {
 
     public boolean ingreso;
-    
+    public String rol;
+    private VtnPrincipalAdmin objVtnPrincipalAdmin;
     
     public ServicioAlmacenamientoUsuarios objServicioAlmacenamiento;
     
@@ -17,6 +21,11 @@ public class VtnLogin extends javax.swing.JInternalFrame {
         this.objServicioAlmacenamiento = objServicioAlmacenamiento;
     }
 
+    public void setObjVtnPrincipalAdmin(VtnPrincipalAdmin objVtnPrincipalAdmin) {
+        this.objVtnPrincipalAdmin = objVtnPrincipalAdmin;
+    }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -131,11 +140,20 @@ public class VtnLogin extends javax.swing.JInternalFrame {
         String password = jPasswordField.getText();
         
         ingreso = objServicioAlmacenamiento.validarIngreso(nombreUsuario, password);
-        /*if(ingreso==true){
+        if(ingreso==true){
             rol = objServicioAlmacenamiento.extraerRol(nombreUsuario);
-        }*/
+            Rol.rolUsuario = rol;
+            this.objVtnPrincipalAdmin.controlRoles();
+            Utilidades.mensajeExito( "Sesion iniciada correctamente","Sesion iniciada");
+            this.jTextFieldNombreUser.setText(null);
+            this.jPasswordField.setText(null);
+        }else{
+            Utilidades.mensajeError( "Usuario o contraseña incorrectos","Error");
+            this.jTextFieldNombreUser.setText(null);
+            this.jPasswordField.setText(null);
+        }
         
-        System.out.println(ingreso);
+        
         
     }//GEN-LAST:event_jButtonIngresarActionPerformed
 
