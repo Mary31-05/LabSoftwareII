@@ -10,26 +10,24 @@ public class Evaluador {
     private String apellidoEvaluador;
     private String temasExperto;
     
-   private Articulo objArticulo;
+    private Articulo objArticulo;
 
-   public Evaluador()
-   {
-       
-   }
+    public Evaluador() {
+    }
     
-    public Evaluador(int idEvaluador,String nombreEvaluador,String apellidoEvaluador, String temasExperto) {
+    public Evaluador(int idEvaluador, String nombreEvaluador, String apellidoEvaluador, String temasExperto) {
         this.idEvaluador = idEvaluador;
         this.nombreEvaluador = nombreEvaluador;
-        this.apellidoEvaluador = apellidoEvaluador;      
+        this.apellidoEvaluador = apellidoEvaluador;
         this.temasExperto = temasExperto;
     }
 
-    public int getId(){
-    return idEvaluador;
+    public int getId() {
+        return idEvaluador;
     }
     
     public void setId(int idEvaluador) {
-    this.idEvaluador = idEvaluador;
+        this.idEvaluador = idEvaluador;
     }
     
     public String getNombre() {
@@ -45,17 +43,17 @@ public class Evaluador {
     }
     
     public void setApellido(String apellidoEvaluador) {
-    this.apellidoEvaluador=apellidoEvaluador;
+        this.apellidoEvaluador = apellidoEvaluador;
     }
     
-    public String getTemas()
-    {
+    public String getTemas() {
         return temasExperto;
     }
     
     public void setTemasExperto(String temasExperto) {
-        this.temasExperto=temasExperto;
+        this.temasExperto = temasExperto;
     }
+
     public Articulo getObjArticulo() {
         return objArticulo;
     }
@@ -64,5 +62,5 @@ public class Evaluador {
         this.objArticulo = objArticulo;
     }
 }
-    
+ 
 

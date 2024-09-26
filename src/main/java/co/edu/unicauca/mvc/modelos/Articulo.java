@@ -1,20 +1,25 @@
 package co.edu.unicauca.mvc.modelos;
 
 public class Articulo {
-   private int idArticulo;
-   private String titulo;
-   private String autores;
-   
-   private Conferencia objConferencia;
+    private int idArticulo;
+    private String titulo;
+    private String autores;
+    
+    private Conferencia objConferencia;
 
-   public Articulo()
-   {
-       
-   }
+    public Articulo() {
+    }
+
+    // Parameterized constructor with all attributes
     public Articulo(int idArticulo, String titulo, String autores) {
         this.idArticulo = idArticulo;
         this.titulo = titulo;
         this.autores = autores;
+    }
+
+    // New constructor with a single String parameter
+    public Articulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public int getIdArticulo() {
@@ -48,6 +53,5 @@ public class Articulo {
     public void setObjConferencia(Conferencia objConferencia) {
         this.objConferencia = objConferencia;
     }
-   
-   
 }
+
