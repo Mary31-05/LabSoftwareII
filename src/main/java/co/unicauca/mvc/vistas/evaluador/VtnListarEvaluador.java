@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JTable;
 
 /**
  *
@@ -29,7 +30,7 @@ public class VtnListarEvaluador extends javax.swing.JInternalFrame {
         inicializarTabla();
     }
     
-     private void inicializarTabla()
+     public void inicializarTabla()
     {
        DefaultTableModel model= new DefaultTableModel();       
        model.addColumn("Id");       
@@ -50,7 +51,7 @@ public class VtnListarEvaluador extends javax.swing.JInternalFrame {
         }        
     }
      
-    private void llenarTabla()
+    public void llenarTabla()
     {
         DefaultTableModel model=(DefaultTableModel) this.jTableListarEvaluadores.getModel();
         limpiarTabla();
@@ -79,7 +80,9 @@ public class VtnListarEvaluador extends javax.swing.JInternalFrame {
         }
         
     }
-
+        public JTable getListadoEvaluadoresTable() {
+        return jTableListarEvaluadores;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
