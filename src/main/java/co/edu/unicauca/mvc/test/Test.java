@@ -36,10 +36,6 @@ public class Test {
         //objRepoUser.registrarUsuario(user1);
         //objRepoUser.registrarUsuario(user2);
         //objRepoUser.registrarUsuario(user3);
-        
-        // Validar la contraseña ingresada
-        //boolean esValida = objRepoUser.validarIngreso("User1", "1234");
-        //System.out.println("Contraseña válida: " + esValida);  // Esto debería imprimir true
 
         
         seleccionarLookAndField();
