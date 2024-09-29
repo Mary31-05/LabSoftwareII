@@ -15,17 +15,30 @@ import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Clase de prueba para la vista de listar conferencias.
+ * Utiliza Mockito para simular el servicio de almacenamiento de conferencias.
+ */
 public class VtnListarConferenciasTest {
 
     private ServicioAlmacenamientoConferencias mockServicio;
     private VtnListarConferencias vtnListarConferencias;
 
+    /**
+     * Configuración inicial de la prueba.
+     * Se crea un mock del servicio de almacenamiento de conferencias
+     * y se inicializa la vista de listar conferencias.
+     */
     @Before
     public void setUp() {
         mockServicio = Mockito.mock(ServicioAlmacenamientoConferencias.class);
         vtnListarConferencias = new VtnListarConferencias(mockServicio);
     }
 
+    /**
+     * Prueba para verificar que la tabla se llena correctamente
+     * con la lista de conferencias.
+     */
     @Test
     public void testLlenarTabla() {
         // Arrange
@@ -39,25 +52,27 @@ public class VtnListarConferenciasTest {
         vtnListarConferencias.llenarTabla();
 
         // Assert
-       JTable jTable = vtnListarConferencias.getListadoConferenciasTable();
+        JTable jTable = vtnListarConferencias.getListadoConferenciasTable();
         DefaultTableModel model = (DefaultTableModel) jTable.getModel();
         assertEquals(2, model.getRowCount());
         assertEquals("Conferencia 1", model.getValueAt(0, 0));
         assertEquals("Conferencia 2", model.getValueAt(1, 0));
     }
 
+    /**
+     * Prueba para verificar que la tabla se limpia correctamente.
+     */
     @Test
     public void testLimpiarTabla() {
         // Arrange
         vtnListarConferencias.llenarTabla(); // Llenamos la tabla primero
-        
+
         // Act
         vtnListarConferencias.limpiarTabla();
-        
+
         // Assert
-       JTable jTable = vtnListarConferencias.getListadoConferenciasTable();
-DefaultTableModel model = (DefaultTableModel) jTable.getModel();
+        JTable jTable = vtnListarConferencias.getListadoConferenciasTable();
+        DefaultTableModel model = (DefaultTableModel) jTable.getModel();
         assertEquals(0, model.getRowCount());
     }
 }
-

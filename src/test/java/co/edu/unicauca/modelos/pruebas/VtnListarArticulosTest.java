@@ -13,17 +13,35 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
+/**
+ * Clase de prueba para la vista VtnListarArticulos.
+ * Esta clase se encarga de verificar el correcto funcionamiento
+ * del método llenarTabla() que se utiliza para poblar la tabla
+ * de artículos en la interfaz gráfica.
+ */
 public class VtnListarArticulosTest {
 
     private ServicioAlmacenamientoArticulos servicioArticulosMock;
     private VtnListarArticulos ventanaListarArticulos;
 
+    /**
+     * Configuración inicial antes de cada prueba.
+     * Se crea un mock del servicio de almacenamiento de artículos
+     * y se instancia la ventana de listar artículos.
+     */
     @Before
     public void setUp() {
         servicioArticulosMock = Mockito.mock(ServicioAlmacenamientoArticulos.class);
         ventanaListarArticulos = new VtnListarArticulos(servicioArticulosMock, null);
     }
 
+    /**
+     * Prueba para verificar que la tabla se llene correctamente
+     * con los artículos proporcionados por el servicio.
+     * Se simula la respuesta del servicio y se valida que
+     * la tabla tenga el número correcto de filas y que los
+     * títulos de los artículos sean los esperados.
+     */
     @Test
     public void testLlenarTabla() {
         List<Articulo> articulos = new ArrayList<>();
@@ -40,5 +58,3 @@ public class VtnListarArticulosTest {
         assertEquals("Título 2", ventanaListarArticulos.getJTableListarArticulos().getValueAt(1, 1));
     }
 }
-
-

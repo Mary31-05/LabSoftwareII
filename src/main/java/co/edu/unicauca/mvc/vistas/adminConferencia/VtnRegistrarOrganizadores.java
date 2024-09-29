@@ -4,18 +4,33 @@ import co.edu.unicauca.mvc.modelos.Organizador;
 import co.edu.unicauca.mvc.utilidades.Utilidades;
 
 /**
- *
- * @author Usuario
+ * Clase VtnRegistrarOrganizadores.
+ * Esta clase representa la ventana de registro de organizadores en la aplicación.
+ * Permite al usuario registrar un organizador ingresando su nombre, apellido y universidad.
+ * 
+ * @package co.edu.unicauca.mvc.vistas.adminConferencia
+ * @autor Usuario
  */
 public class VtnRegistrarOrganizadores extends javax.swing.JFrame {
-
+    /**
+     * Servicio utilizado para almacenar los organizadores.
+     */
     private ServicioAlmacenamientoOrganizadores objServicioAlmacenamientoOrganizadores;
-    
+     /**
+     * Constructor de la clase VtnRegistrarOrganizadores.
+     * Inicializa la ventana y el servicio de almacenamiento.
+     * 
+     * @param objServicioAlmacenamientoOrganizadores Servicio de almacenamiento de organizadores.
+     */
     public VtnRegistrarOrganizadores(ServicioAlmacenamientoOrganizadores objServicioAlmacenamientoOrganizadores) {
         initComponents();
         this.objServicioAlmacenamientoOrganizadores=objServicioAlmacenamientoOrganizadores;
     }
-
+    /**
+     * Método para inicializar los componentes de la ventana.
+     * Este método es generado automáticamente por el Editor de Formas.
+     * No se debe modificar manualmente el contenido de este método.
+     */
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -133,7 +148,13 @@ public class VtnRegistrarOrganizadores extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Acción realizada cuando el usuario hace clic en el botón "Registrar".
+     * Toma los datos ingresados en los campos de texto y crea un nuevo organizador.
+     * Luego, intenta almacenar el organizador a través del servicio de almacenamiento.
+     * 
+     * @param evt Evento de acción que dispara el método.
+     */
     private void jButtonRegistrarOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarOActionPerformed
         String nombreOrganizador=this.jTextFieldNombre.getText();
         String apellidoOrganizador=this.jTextFieldApellido.getText();

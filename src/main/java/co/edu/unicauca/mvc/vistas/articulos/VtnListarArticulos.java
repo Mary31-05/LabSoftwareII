@@ -12,12 +12,22 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
+/**
+ * Clase que representa la ventana para listar artículos en el sistema.
+ * Permite gestionar la visualización, actualización y eliminación de artículos.
+ */
 public class VtnListarArticulos extends javax.swing.JInternalFrame {
-
+    /**
+     * Servicio para el almacenamiento de artículos y conferencias.
+     */
     public ServicioAlmacenamientoArticulos objServicio;
     public ServicioAlmacenamientoConferencias objServicio2;
-    
+    /**
+     * Constructor de la clase VtnListarArticulos.
+     *
+     * @param objServicio Servicio de almacenamiento de artículos.
+     * @param objServicio2 Servicio de almacenamiento de conferencias.
+     */
     public VtnListarArticulos(
             ServicioAlmacenamientoArticulos objServicio,
             ServicioAlmacenamientoConferencias objServicio2) {
@@ -27,7 +37,9 @@ public class VtnListarArticulos extends javax.swing.JInternalFrame {
         this.jTableListarArticulos.setDefaultRenderer(Object.class, new Render());
         inicializarTabla();
     }
-
+    /**
+     * Inicializa la tabla que muestra la lista de artículos.
+     */
      private void inicializarTabla()
     {
        DefaultTableModel model= new DefaultTableModel();       
@@ -39,7 +51,9 @@ public class VtnListarArticulos extends javax.swing.JInternalFrame {
        model.addColumn("Actualizar");       
        this.jTableListarArticulos.setModel(model);
     }
-     
+     /**
+     * Limpia las filas de la tabla.
+     */
      public void limpiarTabla(){
         
         DefaultTableModel modelo=(DefaultTableModel) this.jTableListarArticulos.getModel();
@@ -48,7 +62,9 @@ public class VtnListarArticulos extends javax.swing.JInternalFrame {
             modelo.removeRow(0);
         }        
     }
-     
+     /**
+     * Llena la tabla con los artículos disponibles en el sistema.
+     */
     public void llenarTabla()
     {
         DefaultTableModel model=(DefaultTableModel) this.jTableListarArticulos.getModel();
@@ -77,6 +93,11 @@ public class VtnListarArticulos extends javax.swing.JInternalFrame {
         }
         
     }
+    /**
+     * Devuelve la tabla que lista los artículos.
+     *
+     * @return JTable que lista los artículos.
+     */
     public JTable getJTableListarArticulos() {
     return jTableListarArticulos;
     }
@@ -202,17 +223,32 @@ public class VtnListarArticulos extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Maneja el evento de acción del botón "Actualizar".
+     * Llama al método llenarTabla para actualizar la lista de artículos.
+     *
+     * @param evt El evento de acción.
+     */
     private void jButtonActalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActalizarActionPerformed
        llenarTabla();
     }//GEN-LAST:event_jButtonActalizarActionPerformed
-
+    /**
+     * Maneja el evento de acción del botón "Registrar".
+     * Abre una nueva ventana para registrar un artículo.
+     *
+     * @param evt El evento de acción.
+     */
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
         VtnRegistrarArticulo objVtnRegistrarArticulo=new VtnRegistrarArticulo(objServicio, objServicio2);
         objVtnRegistrarArticulo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         objVtnRegistrarArticulo.setVisible(true);
     }//GEN-LAST:event_jButtonRegistrarActionPerformed
-
+    /**
+     * Maneja el evento de clic en la tabla de artículos.
+     * Permite eliminar o actualizar un artículo según el botón que se presione.
+     *
+     * @param evt El evento de mouse clic.
+     */
     private void jTableListarArticulosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListarArticulosMouseClicked
         
         int column = this.jTableListarArticulos.getColumnModel().getColumnIndexAtX(evt.getX());

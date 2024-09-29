@@ -5,13 +5,24 @@
 package co.edu.unicauca.mvc.vistas.adminConferencia;
 
 /**
- *
+ * Ventana interna que muestra estadísticas de la conferencia.
+ * <p>
+ * Esta clase crea una interfaz gráfica en una ventana interna para visualizar
+ * las estadísticas relacionadas con una conferencia específica. Se utiliza 
+ * en el módulo de administración del sistema MVC (Modelo-Vista-Controlador).
+ * </p>
+ * 
  * @author LENOVO
+ * @version 1.0
+ * @since 2024-09-26
  */
 public class VtnVerEstadisticas extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form VtnVerEstadisticas
+     * Constructor de la clase VtnVerEstadisticas.
+     * <p>
+     * Inicializa los componentes gráficos de la ventana interna.
+     * </p>
      */
     public VtnVerEstadisticas() {
         initComponents();

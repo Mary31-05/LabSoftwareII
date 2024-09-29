@@ -5,8 +5,19 @@ import co.edu.unicauca.mvc.modelos.Evaluador;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Clase de prueba para la funcionalidad de listar evaluadores.
+ * Esta clase contiene pruebas unitarias para la clase Evaluador,
+ * asegurando que sus constructores y métodos funcionen correctamente.
+ */
 class VtnListarEvaluadoresTest {
 
+    /**
+     * Prueba del constructor de Evaluador con parámetros.
+     * Se verifica que el objeto Evaluador se inicializa correctamente
+     * con los parámetros proporcionados y que el objeto Articulo
+     * asociado también es correcto.
+     */
     @Test
     void testConstructorConParametros() {
         Articulo articulo = new Articulo(1, "Título del Artículo", "Autor1");
@@ -21,6 +32,12 @@ class VtnListarEvaluadoresTest {
         assertEquals("Título del Artículo", evaluador.getObjArticulo().getTitulo());
     }
 
+    /**
+     * Prueba del constructor predeterminado de Evaluador.
+     * Se crea un evaluador utilizando el constructor sin parámetros
+     * y se establecen sus atributos mediante los métodos setters.
+     * Se verifica que los valores se hayan establecido correctamente.
+     */
     @Test
     void testConstructorPredeterminado() {
         Evaluador evaluador = new Evaluador();
@@ -39,6 +56,11 @@ class VtnListarEvaluadoresTest {
         assertEquals("Otro Título", evaluador.getObjArticulo().getTitulo());
     }
 
+    /**
+     * Prueba de los métodos setters y getters de Evaluador.
+     * Se verifica que los métodos de acceso funcionen correctamente
+     * y que los valores establecidos se recuperen como se espera.
+     */
     @Test
     void testSettersAndGetters() {
         Evaluador evaluador = new Evaluador();
@@ -57,5 +79,3 @@ class VtnListarEvaluadoresTest {
         assertEquals("Título de Prueba", evaluador.getObjArticulo().getTitulo());
     }
 }
-
-

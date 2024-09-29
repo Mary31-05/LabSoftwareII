@@ -8,18 +8,35 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author Usuario
+ * Clase VtnListarOrganizadores
+ * Esta clase define la ventana interna que se encarga de listar los organizadores
+ * almacenados en el sistema. Permite mostrar la información de los organizadores
+ * en una tabla y proporciona opciones para actualizar y registrar nuevos organizadores.
+ * 
+ * @autor Usuario
  */
 public class VtnListarOrganizadores extends javax.swing.JInternalFrame {
- private ServicioAlmacenamientoOrganizadores objServicioAlmacenamientoOrganizadores;
+    /**
+     * Servicio que gestiona la lógica de almacenamiento de los organizadores.
+     */
+    private ServicioAlmacenamientoOrganizadores objServicioAlmacenamientoOrganizadores;
     
+    /**
+     * Constructor de la clase. Inicializa los componentes de la interfaz y el servicio
+     * de almacenamiento de organizadores.
+     * 
+     * @param objServicioAlmacenamientoOrganizadores Instancia del servicio que maneja
+     *                                               el almacenamiento de los organizadores.
+     */
     public VtnListarOrganizadores(ServicioAlmacenamientoOrganizadores objServicioAlmacenamientoOrganizadores) {
         initComponents();
         this.objServicioAlmacenamientoOrganizadores =objServicioAlmacenamientoOrganizadores;
         iniciarlizarTabla();
     }
-
+     /**
+     * Inicializa la tabla donde se mostrará la lista de organizadores. Configura
+     * las columnas de la tabla.
+     */
     private void iniciarlizarTabla()
     {
        DefaultTableModel model= new DefaultTableModel();       
@@ -28,7 +45,9 @@ public class VtnListarOrganizadores extends javax.swing.JInternalFrame {
        model.addColumn("Universidad");
        this.jTableListadoOrganizadores.setModel(model);
     }
-    
+    /**
+     * Limpia el contenido de la tabla de organizadores, eliminando todas las filas.
+     */
     public void limpiarTabla() {
         DefaultTableModel modelo = (DefaultTableModel) this.jTableListadoOrganizadores.getModel();
         int filas = this.jTableListadoOrganizadores.getRowCount();
@@ -36,7 +55,10 @@ public class VtnListarOrganizadores extends javax.swing.JInternalFrame {
             modelo.removeRow(0);
         }        
     }
-    
+    /**
+     * Llena la tabla de organizadores con los datos obtenidos desde el servicio
+     * de almacenamiento de organizadores.
+     */
     public void llenarTabla() {
         DefaultTableModel model = (DefaultTableModel) this.jTableListadoOrganizadores.getModel();
         limpiarTabla();

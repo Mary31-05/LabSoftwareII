@@ -7,11 +7,25 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
+/**
+ * Ventana para registrar una conferencia.
+ * Permite al usuario ingresar los detalles de una conferencia y registrarla
+ * en el sistema.
+ * 
+ * @version 1.0
+ * @since 2024-09-26
+ */
 public class VtnRegistrarConferencia extends javax.swing.JFrame {
-
+    /**
+     * Servicio que gestiona la lógica de almacenamiento de los organizadores.
+     */
     private ServicioAlmacenamientoConferencias objServicioAlmacenamiento;
-    
+    /**
+     * Constructor de la ventana VtnRegistrarConferencia.
+     * Inicializa los componentes de la interfaz gráfica y el servicio de almacenamiento.
+     * 
+     * @param objServicioAlmacenamiento Servicio encargado de almacenar las conferencias.
+     */
     public VtnRegistrarConferencia(ServicioAlmacenamientoConferencias objServicioAlmacenamiento) {
         initComponents();
         this.objServicioAlmacenamiento=objServicioAlmacenamiento;
@@ -152,7 +166,13 @@ public class VtnRegistrarConferencia extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+     /**
+     * Acción que se ejecuta al hacer clic en el botón Registrar.
+     * Valida los datos ingresados, los convierte a los formatos correctos, y
+     * registra la conferencia en el sistema.
+     * 
+     * @param evt Evento generado por la acción del usuario.
+     */
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
         
         String nombre, fechaInicio, fechaFin, costo;

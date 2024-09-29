@@ -11,27 +11,40 @@ import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 /**
- *
+ * Ventana para registrar un evaluador.
+ * Esta clase permite la interacción del usuario para registrar un evaluador
+ * con su nombre, apellido, temas de experto y un artículo asignado.
+ * 
  * @author Usuario
  */
 public class VtnRegistrarEvaluador extends javax.swing.JFrame {
 
     private ServicioAlmacenamientoEvaluadores objServicio4;
     private ServicioAlmacenamientoArticulos objServicio2;
-    
+
+    /**
+     * Constructor de la ventana.
+     * 
+     * @param objServicio2 Servicio para almacenar artículos.
+     * @param objServicio4 Servicio para almacenar evaluadores.
+     */
     public VtnRegistrarEvaluador(
             ServicioAlmacenamientoArticulos objServicio2,
             ServicioAlmacenamientoEvaluadores objServicio4) {
         initComponents();
-        this.objServicio4=objServicio4;
-        this.objServicio2=objServicio2;
+        this.objServicio4 = objServicio4;
+        this.objServicio2 = objServicio2;
         cargarArticulos();
     }
-    
-    public void cargarArticulos()
-    {   
-        ArrayList<Articulo> articulos= (ArrayList<Articulo>) this.objServicio2.listarArticulos();
-         for (int i = 0; i < articulos.size(); i++) {
+
+    /**
+     * Carga los artículos disponibles en el combo box.
+     * Este método recupera la lista de artículos y los agrega al componente
+     * jComboBoxArticulo para que el usuario pueda seleccionarlos.
+     */
+    public void cargarArticulos() {
+        ArrayList<Articulo> articulos = (ArrayList<Articulo>) this.objServicio2.listarArticulos();
+        for (int i = 0; i < articulos.size(); i++) {
             this.jComboBoxArticulo.addItem(articulos.get(i));
         }
     }
@@ -188,7 +201,13 @@ public class VtnRegistrarEvaluador extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Acción que se ejecuta al presionar el botón de registrar evaluador.
+     * Este método recopila los datos ingresados por el usuario y 
+     * almacena el evaluador a través del servicio correspondiente.
+     * 
+     * @param evt Evento generado al presionar el botón.
+     */
     private void jButtonRegistrarEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarEActionPerformed
         String nombreEvaluador, apellidoEvaluador, temasExperto; 
         Articulo objArticulo;

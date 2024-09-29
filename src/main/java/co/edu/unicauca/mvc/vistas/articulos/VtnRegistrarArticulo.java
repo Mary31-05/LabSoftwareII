@@ -13,14 +13,24 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
- *
+ * Ventana para registrar artículos en la aplicación.
+ * <p>
+ * Esta clase extiende {@code JFrame} y permite al usuario ingresar
+ * el título, autores y conferencia asociada a un artículo.
+ * </p>
+ * 
  * @author HSVSTT2
  */
 public class VtnRegistrarArticulo extends javax.swing.JFrame {
 
     private ServicioAlmacenamientoArticulos objServicio1;
     private ServicioAlmacenamientoConferencias objServicio2;
-    
+    /**
+     * Constructor de la clase VtnRegistrarArticulo.
+     *
+     * @param objServicio1 Servicio de almacenamiento de artículos.
+     * @param objServicio2 Servicio de almacenamiento de conferencias.
+     */
     public VtnRegistrarArticulo(
             ServicioAlmacenamientoArticulos objServicio1,
             ServicioAlmacenamientoConferencias objServicio2) {
@@ -29,7 +39,14 @@ public class VtnRegistrarArticulo extends javax.swing.JFrame {
         this.objServicio2=objServicio2;
         cargarConferencias();
     }
-    
+    /**
+     * Carga las conferencias disponibles en el combo box.
+     * <p>
+     * Este método recupera la lista de conferencias a través del servicio
+     * de almacenamiento de conferencias y las agrega al componente de
+     * interfaz gráfica {@code jComboBoxConferencia}.
+     * </p>
+     */
     public void cargarConferencias()
     {
         
@@ -165,7 +182,17 @@ public class VtnRegistrarArticulo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Acción a realizar cuando se presiona el botón "Registrar".
+     * <p>
+     * Este método recupera los datos ingresados por el usuario, crea un
+     * nuevo objeto {@code Articulo} y lo almacena utilizando el servicio
+     * de almacenamiento de artículos. Informa al usuario si el registro fue
+     * exitoso o no.
+     * </p>
+     * 
+     * @param evt Evento que genera la acción.
+     */
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
         String titulo, autores;
         Conferencia objConferencia;

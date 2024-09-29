@@ -8,39 +8,56 @@ import co.edu.unicauca.mvc.utilidades.Utilidades;
 import java.util.ArrayList;
 import java.util.LinkedList;
 /**
- *
+ * Ventana para actualizar la información de un evaluador.
+ * 
+ * Esta clase extiende JFrame y proporciona una interfaz gráfica
+ * para la actualización de datos del evaluador, incluyendo su
+ * nombre, apellido, temas de experiencia y artículo asignado.
+ * 
  * @author Usuario
  */
 public class VtnActualizarEvaluador extends javax.swing.JFrame {
 
+    // Servicios para almacenamiento de artículos y evaluadores
     private ServicioAlmacenamientoArticulos objServicio1;
     private ServicioAlmacenamientoEvaluadores objServicio4;
-    
+
+    /**
+     * Constructor de la clase VtnActualizarEvaluador.
+     * 
+     * @param objServicio1 Servicio para almacenar artículos.
+     * @param objServicio4 Servicio para almacenar evaluadores.
+     */
     public VtnActualizarEvaluador(
             ServicioAlmacenamientoArticulos objServicio1,
             ServicioAlmacenamientoEvaluadores objServicio4) {
         initComponents();
-        this.objServicio1=objServicio1;
-        this.objServicio4=objServicio4;
+        this.objServicio1 = objServicio1;
+        this.objServicio4 = objServicio4;
         cargarArticulos();
     }
-    
-    public void cargarDatos(int idEvaluador)
-    {
-        Evaluador objEvaluador=this.objServicio4.consultarEvaluador(idEvaluador);
-        this.jTextFieldId.setText(objEvaluador.getId()+"");
+
+    /**
+     * Carga los datos del evaluador en los campos de texto.
+     * 
+     * @param idEvaluador El ID del evaluador a consultar.
+     */
+    public void cargarDatos(int idEvaluador) {
+        Evaluador objEvaluador = this.objServicio4.consultarEvaluador(idEvaluador);
+        this.jTextFieldId.setText(String.valueOf(objEvaluador.getId()));
         this.jTextFieldNombre.setText(objEvaluador.getNombre());
         this.jTextFieldApellido.setText(objEvaluador.getApellido());
         this.jTextAreaTemas.setText(objEvaluador.getTemas());
         this.jComboBoxArticulo.setSelectedItem(objEvaluador.getObjArticulo());
     }
-    
-        public void cargarArticulos()
-    {
-        
-        ArrayList<Articulo> Articulos= (ArrayList<Articulo>) this.objServicio1.listarArticulos();
-         for (int i = 0; i < Articulos.size(); i++) {
-            this.jComboBoxArticulo.addItem(Articulos.get(i));
+
+    /**
+     * Carga la lista de artículos disponibles en el JComboBox.
+     */
+    public void cargarArticulos() {
+        ArrayList<Articulo> Articulos = (ArrayList<Articulo>) this.objServicio1.listarArticulos();
+        for (Articulo articulo : Articulos) {
+            this.jComboBoxArticulo.addItem(articulo);
         }
     }
 
@@ -192,7 +209,11 @@ public class VtnActualizarEvaluador extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Maneja el evento de acción para el botón de actualización.
+     * 
+     * @param evt El evento de acción.
+     */
     private void jButtonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarActionPerformed
         String nombre, apellido, temasExperto, id;
         Articulo objArticulo;

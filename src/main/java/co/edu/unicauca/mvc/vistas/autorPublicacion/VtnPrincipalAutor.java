@@ -6,13 +6,17 @@ import co.edu.unicauca.mvc.modelos.Conferencia;
 import java.text.SimpleDateFormat;
 
 /**
- *
+ * Ventana principal para los autores de las publicaciones.
+ * Esta clase extiende {@link javax.swing.JFrame} e implementa 
+ * la interfaz {@link Observer} para recibir notificaciones sobre 
+ * nuevas conferencias registradas.
+ * 
  * @author HSVSTT2
  */
 public class VtnPrincipalAutor extends javax.swing.JFrame implements Observer{
 
     /**
-     * Creates new form VtnPrincipalAdmin
+     * Crea una nueva instancia de la ventana principal para autores.
      */
     public VtnPrincipalAutor() {
         initComponents();
@@ -108,7 +112,13 @@ public class VtnPrincipalAutor extends javax.swing.JFrame implements Observer{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Actualiza las notificaciones mostradas en la interfaz gráfica 
+     * cuando se recibe una nueva conferencia.
+     * 
+     * @param o Objeto que contiene información sobre las conferencias 
+     *          registradas, implementando la interfaz {@link ServicioAlmacenamientoConferencias}.
+     */
    @Override
     public void update(Object o) {
         String notificacion;        

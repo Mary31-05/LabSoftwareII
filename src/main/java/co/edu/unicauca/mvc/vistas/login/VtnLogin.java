@@ -5,22 +5,39 @@ import co.edu.unicauca.mvc.controladores.ServicioAlmacenamientoUsuarios;
 import co.edu.unicauca.mvc.modelos.Rol;
 import co.edu.unicauca.mvc.utilidades.Utilidades;
 import co.edu.unicauca.mvc.vistas.adminConferencia.VtnPrincipalAdmin;
-
+/**
+ * Clase VtnLogin que representa la ventana de inicio de sesión en la aplicación.
+ * Hereda de javax.swing.JInternalFrame.
+ */
 public class VtnLogin extends javax.swing.JInternalFrame {
-
+    /** Indica si el ingreso fue exitoso. */
     public boolean ingreso;
+    
+    /** Rol del usuario que inicia sesión. */
     public String rol;
+    
+    /** Objeto de la ventana principal del administrador. */
     private VtnPrincipalAdmin objVtnPrincipalAdmin;
     
+    /** Servicio de almacenamiento de usuarios. */
     public ServicioAlmacenamientoUsuarios objServicioAlmacenamiento;
     
+    /**
+     * Constructor de la clase VtnLogin.
+     * 
+     * @param objServicioAlmacenamiento Servicio de almacenamiento de usuarios.
+     */
     public VtnLogin(
             ServicioAlmacenamientoUsuarios objServicioAlmacenamiento) 
     {
         initComponents();
         this.objServicioAlmacenamiento = objServicioAlmacenamiento;
     }
-
+    /**
+     * Establece la ventana principal del administrador.
+     * 
+     * @param objVtnPrincipalAdmin Ventana principal del administrador.
+     */
     public void setObjVtnPrincipalAdmin(VtnPrincipalAdmin objVtnPrincipalAdmin) {
         this.objVtnPrincipalAdmin = objVtnPrincipalAdmin;
     }

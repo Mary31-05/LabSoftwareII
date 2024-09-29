@@ -12,7 +12,11 @@ import co.unicauca.mvc.vistas.evaluador.VtnListarEvaluador;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-
+/**
+ * Clase que representa la ventana principal para el administrador de conferencias.
+ * Permite gestionar conferencias, evaluadores, organizadores y estadísticas,
+ * dependiendo del rol del usuario autenticado.
+ */
 public class VtnPrincipalAdmin extends javax.swing.JFrame {
 
     private VtnVerEstadisticas objVtnVerEstadisticas;
@@ -26,7 +30,10 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
     private ServicioAlmacenamientoEvaluadores objServicio4;
     private ServicioAlmacenamientoUsuarios objServicio5;
     private VtnListarOrganizadores objVtnRegistrarOrganizadores;
-
+    /**
+     * Constructor de la ventana principal del administrador.
+     * Inicializa los componentes y establece la configuración de la interfaz.
+     */
     public VtnPrincipalAdmin() {
         initComponents();
         establecerIconoOrganización();
@@ -35,7 +42,15 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
         this.jPanelMenu.setVisible(false);
         
     }
-
+    /**
+     * Asocia los servicios de almacenamiento para conferencias, artículos,
+     * organizadores, evaluadores y usuarios.
+     * @param objServicio1 Servicio para conferencias.
+     * @param objServicio2 Servicio para artículos.
+     * @param objServicio3 Servicio para organizadores.
+     * @param objServicio4 Servicio para evaluadores.
+     * @param objServicio5 Servicio para usuarios.
+     */
     public void asociarServios(
             ServicioAlmacenamientoConferencias objServicio1,
             ServicioAlmacenamientoArticulos objServicio2,
@@ -49,7 +64,9 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
         this.objServicio5 = objServicio5;
         relacionarInternalFrameConJdesptokPane();
     }
-
+    /**
+     * Relaciona las diferentes ventanas internas con el panel principal del escritorio.
+     */
     private void relacionarInternalFrameConJdesptokPane() {
         this.objVtnVerEstadisticas = new VtnVerEstadisticas();
         this.jDesktopPanelPrincipal.add(this.objVtnVerEstadisticas);
@@ -71,9 +88,9 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
         this.jDesktopPanelPrincipal.add(this.objVtnLogin);
         
     }
-
-    // Control roles
-    public void controlRoles() {
+    /**
+     * Controla los roles de usuario, mostrando las opciones del menú según el rol autenticado.
+     */    public void controlRoles() {
         /*if(this.objVtnLogin.buttonClicked()!=null){
             
         }*/
@@ -104,7 +121,9 @@ public class VtnPrincipalAdmin extends javax.swing.JFrame {
         this.jLabelRol.setText("Rol: "+Rol.rolUsuario);
         
     }
-
+     /**
+     * Establece el icono de la organización en la interfaz.
+     */
     private void establecerIconoOrganización() {
         Image img1 = new ImageIcon(getClass().getResource("/recursos/logo.png")).getImage();
         ImageIcon img2 = new ImageIcon(img1.getScaledInstance(40, 40, Image.SCALE_SMOOTH));

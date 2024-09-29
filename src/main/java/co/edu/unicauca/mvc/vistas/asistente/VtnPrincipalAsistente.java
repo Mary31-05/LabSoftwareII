@@ -7,13 +7,17 @@ import co.edu.unicauca.mvc.modelos.Conferencia;
 import java.text.SimpleDateFormat;
 
 /**
- *
+ * Clase que representa la ventana principal para los asistentes de conferencias.
+ * Esta clase extiende de JFrame e implementa el patrón Observer para recibir
+ * notificaciones sobre nuevas conferencias.
+ * 
  * @author HSVSTT2
  */
 public class VtnPrincipalAsistente extends javax.swing.JFrame implements Observer{
 
     /**
-     * Creates new form VtnPrincipalAdmin
+     * Crea una nueva instancia de VtnPrincipalAsistente.
+     * Inicializa los componentes de la interfaz gráfica.
      */
     public VtnPrincipalAsistente() {
         initComponents();
@@ -109,7 +113,11 @@ public class VtnPrincipalAsistente extends javax.swing.JFrame implements Observe
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Actualiza la interfaz con la información de una nueva conferencia.
+     * 
+     * @param o objeto que contiene la información de la conferencia.
+     */
    @Override
     public void update(Object o) {
         String notificacion;

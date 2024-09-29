@@ -10,16 +10,35 @@ import co.edu.unicauca.mvc.modelos.Conferencia;
 import java.util.LinkedList;
 import javax.swing.JTable;
 
-public class VtnListarConferencias extends javax.swing.JInternalFrame {
 
-    private ServicioAlmacenamientoConferencias objServicioAlmacenamiento;
+/**
+ * Clase que representa la ventana interna para listar conferencias en el sistema.
+ * Proporciona una interfaz gráfica para mostrar y gestionar las conferencias 
+ * almacenadas en el sistema.
+ * 
+ * @author Usuario
+ * @version 1.0
+ */
+public class VtnListarConferencias extends javax.swing.JInternalFrame {
     
+     /**
+     * Servicio encargado de gestionar el almacenamiento y recuperación de conferencias.
+     */
+    private ServicioAlmacenamientoConferencias objServicioAlmacenamiento;
+    /**
+     * Constructor que inicializa la ventana con el servicio de almacenamiento de conferencias.
+     * 
+     * @param objServicioAlmacenamiento Servicio para acceder a los datos de las conferencias.
+     */
     public VtnListarConferencias(ServicioAlmacenamientoConferencias objServicioAlmacenamiento) {
         initComponents();
         this.objServicioAlmacenamiento=objServicioAlmacenamiento;
         iniciarlizarTabla();
     }
-
+    /**
+     * Método para inicializar la tabla donde se mostrarán las conferencias.
+     * Define las columnas de la tabla.
+     */
     private void iniciarlizarTabla()
     {
        DefaultTableModel model= new DefaultTableModel();       
@@ -29,7 +48,10 @@ public class VtnListarConferencias extends javax.swing.JInternalFrame {
        model.addColumn("Costo");
        this.jTableListadoConferencias.setModel(model);
     }
-    
+     /**
+     * Método para limpiar la tabla de conferencias.
+     * Elimina todas las filas de la tabla actual.
+     */
     public void limpiarTabla(){
         
         DefaultTableModel modelo=(DefaultTableModel) this.jTableListadoConferencias.getModel();
@@ -38,7 +60,10 @@ public class VtnListarConferencias extends javax.swing.JInternalFrame {
             modelo.removeRow(0);
         }        
     }
-    
+     /**
+     * Método para llenar la tabla con las conferencias almacenadas.
+     * Recupera las conferencias a través del servicio de almacenamiento y las muestra en la tabla.
+     */
     public void llenarTabla()
     {
         DefaultTableModel model=(DefaultTableModel) this.jTableListadoConferencias.getModel();
@@ -52,7 +77,11 @@ public class VtnListarConferencias extends javax.swing.JInternalFrame {
         }
         
     }
-    
+     /**
+     * Devuelve la tabla de conferencias para su manipulación externa.
+     * 
+     * @return JTable que contiene la lista de conferencias.
+     */
     public JTable getListadoConferenciasTable() {
         return jTableListadoConferencias;
     }
@@ -176,11 +205,21 @@ public class VtnListarConferencias extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Acción ejecutada al presionar el botón de actualizar.
+     * Llama al método para llenar la tabla con los datos más recientes.
+     * 
+     * @param evt Evento de acción.
+     */
     private void jButtonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarActionPerformed
        llenarTabla();
     }//GEN-LAST:event_jButtonActualizarActionPerformed
-
+    /**
+     * Acción ejecutada al presionar el botón de registrar una nueva conferencia.
+     * Abre una nueva ventana para registrar una conferencia.
+     * 
+     * @param evt Evento de acción.
+     */
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
         VtnRegistrarConferencia objVtnRegistrarConferencia= 
                 new VtnRegistrarConferencia(this.objServicioAlmacenamiento);

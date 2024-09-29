@@ -13,74 +13,96 @@ import javax.swing.JFrame;
 import javax.swing.JTable;
 
 /**
- *
+ * Ventana interna para listar los evaluadores y gestionar sus datos.
+ * Permite eliminar y actualizar la información de los evaluadores.
+ * 
  * @author Usuario
  */
 public class VtnListarEvaluador extends javax.swing.JInternalFrame {
-    public ServicioAlmacenamientoArticulos objServicio;
-    public ServicioAlmacenamientoEvaluadores objServicio4;
     
+    /** Servicio para el almacenamiento de artículos. */
+    public ServicioAlmacenamientoArticulos objServicio;
+    
+    /** Servicio para el almacenamiento de evaluadores. */
+    public ServicioAlmacenamientoEvaluadores objServicio4;
+
+    /**
+     * Constructor de la clase VtnListarEvaluador.
+     * 
+     * @param objServicio El servicio de almacenamiento de artículos.
+     * @param objServicio4 El servicio de almacenamiento de evaluadores.
+     */
     public VtnListarEvaluador(
             ServicioAlmacenamientoArticulos objServicio,
             ServicioAlmacenamientoEvaluadores objServicio4) {
         initComponents();
-        this.objServicio=objServicio;
-        this.objServicio4=objServicio4;
+        this.objServicio = objServicio;
+        this.objServicio4 = objServicio4;
         this.jTableListarEvaluadores.setDefaultRenderer(Object.class, new RenderE());
         inicializarTabla();
     }
     
-     public void inicializarTabla()
-    {
-       DefaultTableModel model= new DefaultTableModel();       
-       model.addColumn("Id");       
-       model.addColumn("Nombre");
-       model.addColumn("Apellido");
-       model.addColumn("Articulo");
-       model.addColumn("Eliminar");
-       model.addColumn("Actualizar");       
-       this.jTableListarEvaluadores.setModel(model);
+    /**
+     * Inicializa la tabla para listar evaluadores con las columnas correspondientes.
+     */
+    public void inicializarTabla() {
+        DefaultTableModel model = new DefaultTableModel();       
+        model.addColumn("Id");       
+        model.addColumn("Nombre");
+        model.addColumn("Apellido");
+        model.addColumn("Articulo");
+        model.addColumn("Eliminar");
+        model.addColumn("Actualizar");       
+        this.jTableListarEvaluadores.setModel(model);
     }
      
-     public void limpiarTabla(){
-        
-        DefaultTableModel modelo=(DefaultTableModel) this.jTableListarEvaluadores.getModel();
-        int filas=this.jTableListarEvaluadores.getRowCount();
-        for (int i = 0;filas>i; i++) {
+    /**
+     * Limpia las filas de la tabla de evaluadores.
+     */
+    public void limpiarTabla() {
+        DefaultTableModel modelo = (DefaultTableModel) this.jTableListarEvaluadores.getModel();
+        int filas = this.jTableListarEvaluadores.getRowCount();
+        for (int i = 0; filas > i; i++) {
             modelo.removeRow(0);
         }        
     }
      
-    public void llenarTabla()
-    {
-        DefaultTableModel model=(DefaultTableModel) this.jTableListarEvaluadores.getModel();
+    /**
+     * Llena la tabla con los datos de los evaluadores.
+     */
+    public void llenarTabla() {
+        DefaultTableModel model = (DefaultTableModel) this.jTableListarEvaluadores.getModel();
         limpiarTabla();
-        LinkedList<Evaluador> listarEvaluadores
-                = (LinkedList<Evaluador>) this.objServicio4.listarEvaluadores();
+        LinkedList<Evaluador> listarEvaluadores = (LinkedList<Evaluador>) this.objServicio4.listarEvaluadores();
         
         JButton JButtonEliminarEvaluador = new JButton();
-            JButtonEliminarEvaluador.setName("Eliminar");
-            JButtonEliminarEvaluador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/remove.png")));
+        JButtonEliminarEvaluador.setName("Eliminar");
+        JButtonEliminarEvaluador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/remove.png")));
 
         JButton JButtonActualizarEvaluador = new JButton();
         JButtonActualizarEvaluador.setName("Actualizar");
         JButtonActualizarEvaluador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/aplicar.png")));
 
-            
         for (int i = 0; i < listarEvaluadores.size(); i++) {
-            Object [] fila= { 
+            Object[] fila = { 
                 listarEvaluadores.get(i).getId(),
                 listarEvaluadores.get(i).getNombre(),
                 listarEvaluadores.get(i).getApellido(),
                 listarEvaluadores.get(i).getTemas(),
                 listarEvaluadores.get(i).getObjArticulo().getTitulo(),
                 JButtonEliminarEvaluador,
-                JButtonActualizarEvaluador};
+                JButtonActualizarEvaluador
+            };
             model.addRow(fila);
         }
-        
     }
-        public JTable getListadoEvaluadoresTable() {
+
+    /**
+     * Obtiene la tabla de listados de evaluadores.
+     * 
+     * @return La tabla que lista los evaluadores.
+     */
+    public JTable getListadoEvaluadoresTable() {
         return jTableListarEvaluadores;
     }
     /**

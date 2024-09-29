@@ -13,14 +13,22 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
- *
- * @author HSVSTT2
+ * VtnActualizarArticulo
+ * <p>
+ * Esta clase representa la ventana que permite la actualización de los datos 
+ * de un artículo en el sistema, incluyendo su título, autores y conferencia asociada.
+ * </p>
  */
 public class VtnActualizarArticulo extends javax.swing.JFrame {
 
     private ServicioAlmacenamientoArticulos objServicio1;
     private ServicioAlmacenamientoConferencias objServicio2;
-    
+    /**
+     * Constructor de la clase.
+     * 
+     * @param objServicio1 Instancia de ServicioAlmacenamientoArticulos para acceder a los artículos
+     * @param objServicio2 Instancia de ServicioAlmacenamientoConferencias para acceder a las conferencias
+     */
     public VtnActualizarArticulo(
             ServicioAlmacenamientoArticulos objServicio1,
             ServicioAlmacenamientoConferencias objServicio2) {
@@ -29,7 +37,11 @@ public class VtnActualizarArticulo extends javax.swing.JFrame {
         this.objServicio2=objServicio2;
         cargarConferencias();
     }
-    
+    /**
+     * Método para cargar los datos de un artículo existente en los campos de la ventana.
+     * 
+     * @param idArticulo El ID del artículo a consultar y actualizar
+     */
     public void cargarDatos(int idArticulo)
     {
         Articulo objArticulo=this.objServicio1.consultarArticulo(idArticulo);
@@ -38,7 +50,9 @@ public class VtnActualizarArticulo extends javax.swing.JFrame {
         this.jTextAreaAutores.setText(objArticulo.getAutores());
         this.jComboBoxConferencia.setSelectedItem(objArticulo.getObjConferencia());
     }
-    
+    /**
+     * Método para cargar las conferencias disponibles en el ComboBox.
+     */
     public void cargarConferencias()
     {
         
@@ -190,7 +204,12 @@ public class VtnActualizarArticulo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Método que se ejecuta al hacer clic en el botón Actualizar.
+     * Este método actualiza los detalles de un artículo con los datos proporcionados en la ventana.
+     * 
+     * @param evt Evento de clic en el botón
+     */
     private void jButtonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarActionPerformed
         String titulo, autores, id;
         Conferencia objConferencia;
