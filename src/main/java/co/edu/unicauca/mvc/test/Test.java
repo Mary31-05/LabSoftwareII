@@ -42,25 +42,6 @@ public class Test {
      */
     public static void main(String[] args) {
         
-/*// Crear un nuevo usuario con una contraseña
-        Usuario usuario = new Usuario(1,"John", "1234", "Admin");
-        
-        // Validar la contraseña ingresada
-        boolean esValida = usuario.validarPassword("12345");
-        System.out.println("Contraseña válida: " + esValida);  // Esto debería imprimir true
-
-        boolean esValidaIncorrecta = usuario.validarPassword("contraseña_incorrecta");
-        System.out.println("Contraseña válida: " + esValidaIncorrecta);  // Esto debería imprimir false*/
-        // Usuarios quemados,con contrasenia
-        /*Usuario user1 = new Usuario(1,"User1", "1234", "Rol1");
-        //Usuario user1 = new Usuario(1,"User1", "1234", "Rol1");
-        Usuario user2 = new Usuario(1,"User2", "1234", "Rol2");
-        Usuario user3 = new Usuario(1,"User3", "1234", "Rol3");*/
-
-        //objRepoUser.registrarUsuario(user1);
-        //objRepoUser.registrarUsuario(user2);
-        //objRepoUser.registrarUsuario(user3);
-        
         seleccionarLookAndField();
         
         // Inicialización de repositorios y servicios.
