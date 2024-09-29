@@ -13,34 +13,48 @@ import java.util.LinkedList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
+/**
+ * Clase de prueba para la ventana de listar organizadores.
+ * 
+ * Esta clase utiliza JUnit y Mockito para verificar que la funcionalidad
+ * de llenar la tabla con organizadores se comporte correctamente.
+ */
 public class VtnListarOrganizadoresTest {
 
     private ServicioAlmacenamientoOrganizadores servicioMock;
     private VtnListarOrganizadores ventana;
 
+    /**
+     * Método que se ejecuta antes de cada prueba.
+     * Se utiliza para inicializar los objetos necesarios y configurar los mocks.
+     */
     @Before
     public void setUp() {
-        // Mock the service
+        // Mock del servicio
         servicioMock = mock(ServicioAlmacenamientoOrganizadores.class);
         
-        // Mock data
+        // Datos simulados
         Organizador organizador1 = new Organizador("Juan", "Pérez", "Universidad A");
         Organizador organizador2 = new Organizador("Ana", "Gómez", "Universidad B");
         LinkedList<Organizador> organizadores = new LinkedList<>(Arrays.asList(organizador1, organizador2));
         
-        // Mock the behavior of listarOrganizador method
+        // Comportamiento simulado del método listarOrganizador
         when(servicioMock.listarOrganizador()).thenReturn(organizadores);
 
-        // Initialize the window
+        // Inicializar la ventana
         ventana = new VtnListarOrganizadores(servicioMock);
-        ventana.llenarTabla(); // Populate the table with mock data
+        ventana.llenarTabla(); // Llenar la tabla con datos simulados
     }
 
+    /**
+     * Prueba para verificar que la tabla se llena correctamente
+     * con los datos de organizadores simulados.
+     */
     @Test
     public void testLlenarTabla() {
         DefaultTableModel model = (DefaultTableModel) ventana.getListadoOrganizadoresTable().getModel();
 
-        // Verify the table has been populated with the mock data
+        // Verificar que la tabla se haya llenado con los datos simulados
         assertThat(model.getRowCount()).isEqualTo(2);
         assertThat(model.getValueAt(0, 0)).isEqualTo("Juan");
         assertThat(model.getValueAt(0, 1)).isEqualTo("Pérez");
@@ -50,4 +64,3 @@ public class VtnListarOrganizadoresTest {
         assertThat(model.getValueAt(1, 2)).isEqualTo("Universidad B");
     }
 }
-
